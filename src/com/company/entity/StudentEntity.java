@@ -14,7 +14,7 @@ public class StudentEntity {
         this.name = name;
         this.age = age;
         this.number = number;
-
+        id++;
     }
 
     @Override
