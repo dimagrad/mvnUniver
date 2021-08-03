@@ -6,13 +6,13 @@ import java.util.List;
 @Data
 public class CourseEntity {
 
-    private int pte;
+    private long pte;
     private String name;
     private List<StudentEntity> students = null;
-    private Integer points;
-    private Integer maxHours;
+    private long points;
+    private long maxHours;
 
-    public CourseEntity(int pte, String name, Integer points, Integer maxHours) {
+    public CourseEntity(long pte, String name, long points, long maxHours) {
 
         this.pte = pte;
         this.name = name;
@@ -20,6 +20,16 @@ public class CourseEntity {
         this.maxHours = maxHours;
 
     }
+     public boolean addStudent(StudentEntity student){
+
+        if ((this.students.size() < pte) ){
+            students.add(student);
+            return true;
+        } else {
+            System.out.println("Места заняты");
+            return false;
+        }
+     }
 
 @Override
     public String toString(){

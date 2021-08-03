@@ -1,23 +1,24 @@
 package com.company;
 
-import com.company.entity.StudentEntity;
+import com.company.mock.CourseMock;
 import com.company.mock.StudentMock;
 import com.company.service.SystemInputService;
-import com.company.service.parseFile.ParsingFileStudent;
+import com.company.service.addFromFile.AddFromFile;
+import com.company.wrapper.CoursesWrapper;
 import com.company.wrapper.StudentsWrapper;
 
-import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 public class UserDialog {
 
     private StudentsWrapper studentsWrapper;
+    private CoursesWrapper coursesWrapper;
+    private AddFromFile addFromFile;
 
     public UserDialog(){
-
+addFromFile = new AddFromFile();
         studentsWrapper = new StudentsWrapper(StudentMock.getStudents());
+        coursesWrapper = new CoursesWrapper(CourseMock.getCourses());
 
     }
 
@@ -45,18 +46,13 @@ public class UserDialog {
                 break;
 
             case 2:
+                addFromFile.adding(studentsWrapper,coursesWrapper);
+
+                break;
+            case 3:
 
                 System.out.println("\n");
-                Callable<List <StudentEntity>> callable = new ParsingFileStudent();
-                FutureTask futureTask = new FutureTask(callable);
-                new Thread(futureTask).start();
-
-                List<StudentEntity> students = (List<StudentEntity>) futureTask.get();
-
-                for (StudentEntity studenta : students)
-                    if (studenta !=null)
-                        studentsWrapper.addStudent(studenta);
-                System.out.println("Все студенты записаны");
+                coursesWrapper.printCourses();
                 break;
 
             default:
@@ -71,7 +67,9 @@ public class UserDialog {
 
         System.out.println("Выберите что вы хотите:");
         System.out.println("1: Посмотреть всех студентов");
-        System.out.println("2: Запись студентов в программу");
+        System.out.println("2: Запись студентов и курсов в программу");
+        System.out.println("3: Посмотреть все курсы");
+
     }
 
 }
