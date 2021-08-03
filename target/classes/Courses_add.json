@@ -1,0 +1,40 @@
+{
+  "courses": [
+    {
+      "pte": 3,
+      "name": "Алгебра",
+      "points": 2,
+      "maxHours":20
+    },
+    {
+      "pte": 3,
+      "name": "Геометрия",
+      "points": 3,
+      "maxHours":47
+    },
+    {
+      "pte": 3,
+      "name": "Физика",
+      "points": 5,
+      "maxHours":55
+    },
+    {
+      "pte": 3,
+      "name": "Немецкий",
+      "points": 4,
+      "maxHours":30
+    },
+    {
+      "pte": 3,
+      "name": "Химия",
+      "points": 3,
+      "maxHours":70
+    },
+    {
+      "pte": 3,
+      "name": "Физ-ра",
+      "points": 6,
+      "maxHours":100
+    }
+  ]
+}
