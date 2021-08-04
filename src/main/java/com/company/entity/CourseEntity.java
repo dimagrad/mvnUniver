@@ -24,24 +24,14 @@ public class CourseEntity {
 
     }
 
-    public boolean addStudent(StudentEntity student) {
+    public List<StudentEntity> getStudents(){
 
-        if (students.contains(student)){
+        return students;
+    }
 
-            System.out.println("Cтудент уже добавлен");
-            return false;
-        }
+    public void setStudent(StudentEntity student){
 
-        if (this.students.size() < pte) {
-
-            students.add(student);
-            return true;
-
-        } else {
-
-            System.out.println("Места заняты");
-            return false;
-        }
+        students.add(student);
     }
 
     @Override

@@ -22,33 +22,27 @@ public class StudentEntity {
         courses = new ArrayList<>();
     }
 
-    public boolean addCourse(CourseEntity course) {
+    public List<CourseEntity> getCourses(){
 
-        if (courses.contains(course)) {
+        return courses;
+    }
 
-            return false;
-        }
+    public void setCourse(CourseEntity course){
+        courses.add(course);
 
-        if ((courses.size() < 3)) {
+    }
+    public int getSizeOfMarks( int i){
+    return marks[i].length;
+    }
 
-            courses.add(course);
-            int i = courses.size() - 1;
-            for (int j = 0; j < marks[i].length; j++) {
-                marks[i][j] = Mark.getRandom();
-            }
-            System.out.println("студенту записан курс и такие оценки : ");
-                for (int j1 = 0; j1 < marks[i].length; j1++) {
-                    System.out.println(marks[i][j1]);
-                }
-
-            return true;
-
-        } else {
-            return false;
-        }
+    public void setMark(int i, int j, Mark value){
+        marks[i][j] = value;
 
     }
 
+    public Mark getMarks(int i, int j){
+        return marks[i][j];
+    }
     @Override
     public String toString() {
 

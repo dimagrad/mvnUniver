@@ -7,11 +7,11 @@ import com.company.wrapper.StudentsWrapper;
 
 public class AddStudentToCourse {
 
-    public void studentToCourse(CourseEntity course, StudentEntity student) {
+    public void studentToCourse(StudentEntity student, CourseEntity course , StudentsWrapper studentsWrapper, CoursesWrapper coursesWrapper) {
 
         try {
 
-            if ((course.addStudent(student)) & (student.addCourse(course))) {
+            if ((coursesWrapper.addStudent(student, course)) & (studentsWrapper.addCourse(student, course))) {
 
                 System.out.println("Студент " + student.getName() + " добавлен на предмет " + course.getName());
             }
@@ -51,7 +51,7 @@ public class AddStudentToCourse {
 
                 chosenCourse = coursesWrapper.getCourse(crs - 1);
                 chosenStudent = studentsWrapper.getStudent(st - 1);
-                studentToCourse(chosenCourse, chosenStudent);
+                studentToCourse(chosenStudent, chosenCourse, studentsWrapper,coursesWrapper);
 
             } catch (Exception еxc) {
 

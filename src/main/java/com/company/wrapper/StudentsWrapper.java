@@ -1,5 +1,7 @@
 package com.company.wrapper;
 
+import com.company.entity.CourseEntity;
+import com.company.entity.Mark;
 import com.company.entity.StudentEntity;
 
 import java.util.List;
@@ -44,4 +46,31 @@ public class StudentsWrapper {
             System.out.println(student);
         }
     }
+    public boolean addCourse(StudentEntity student, CourseEntity course) {
+
+        if (student.getCourses().contains(course)) {
+
+            return false;
+        }
+
+        if ((student.getCourses().size() < 3)) {
+
+            student.setCourse(course);
+            int i = student.getCourses().size() - 1;
+            for (int j = 0; j < student.getSizeOfMarks(i); j++) {
+                student.setMark(i,j, Mark.getRandom());
+            }
+            System.out.println("студенту записан курс и такие оценки : ");
+            for (int j1 = 0; j1 < student.getSizeOfMarks(i); j1++) {
+                System.out.println(student.getMarks(i,j1));
+            }
+
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+
 }

@@ -2,6 +2,7 @@ package com.company.wrapper;
 
 import com.company.entity.CourseEntity;
 import com.company.entity.Except;
+import com.company.entity.StudentEntity;
 
 import java.util.List;
 
@@ -28,6 +29,27 @@ public class CoursesWrapper {
             System.out.println("Курс уже существует");
         }
 
+    }
+
+    public boolean addStudent(StudentEntity student, CourseEntity course) {
+
+        if (course.getStudents().contains(student)){
+
+            System.out.println("Cтудент уже добавлен");
+            return false;
+        }
+
+        if (course.getStudents().size() < course.getPte()) {
+
+
+            course.setStudent(student);
+            return true;
+
+        } else {
+
+            System.out.println("Места заняты");
+            return false;
+        }
     }
 
     public void printCourses(){
