@@ -14,7 +14,7 @@ import java.util.concurrent.FutureTask;
 
 public class AddFromFile {
     public void adding(StudentsWrapper studentsWrapper, CoursesWrapper coursesWrapper) throws ExecutionException, InterruptedException {
-        System.out.println("\n");
+
         Callable<List<StudentEntity>> callableStudents = new ParsingFileStudent();
         FutureTask futureTaskStudent = new FutureTask(callableStudents);
         new Thread(futureTaskStudent).start();
@@ -22,19 +22,18 @@ public class AddFromFile {
         List<StudentEntity> students = (List<StudentEntity>) futureTaskStudent.get();
 
         for (StudentEntity studenta : students)
-            if (studenta !=null)
+            if (studenta != null)
                 studentsWrapper.addStudent(studenta);
         System.out.println("Все студенты записаны");
 
-        System.out.println("\n");
-        Callable<List <CourseEntity>> callableCourses = new ParsingFileCourses();
+        Callable<List<CourseEntity>> callableCourses = new ParsingFileCourses();
         FutureTask futureTaskCourses = new FutureTask(callableCourses);
         new Thread(futureTaskCourses).start();
 
         List<CourseEntity> courses = (List<CourseEntity>) futureTaskCourses.get();
 
         for (CourseEntity course : courses)
-            if (course !=null)
+            if (course != null)
                 coursesWrapper.addCourse(course);
         System.out.println("Все курсы записаны");
     }

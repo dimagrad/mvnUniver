@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.mock.CourseMock;
 import com.company.mock.StudentMock;
+import com.company.service.AddStudentToCourse;
 import com.company.service.SystemInputService;
 import com.company.service.addFromFile.AddFromFile;
 import com.company.wrapper.CoursesWrapper;
@@ -11,12 +12,15 @@ import java.util.concurrent.ExecutionException;
 
 public class UserDialog {
 
+    private AddStudentToCourse addStudentToCourse;
     private StudentsWrapper studentsWrapper;
     private CoursesWrapper coursesWrapper;
     private AddFromFile addFromFile;
 
     public UserDialog(){
-addFromFile = new AddFromFile();
+
+        addStudentToCourse = new AddStudentToCourse();
+        addFromFile = new AddFromFile();
         studentsWrapper = new StudentsWrapper(StudentMock.getStudents());
         coursesWrapper = new CoursesWrapper(CourseMock.getCourses());
 
@@ -55,6 +59,11 @@ addFromFile = new AddFromFile();
                 coursesWrapper.printCourses();
                 break;
 
+            case 4:
+
+                addStudentToCourse.addStudentToCourse(studentsWrapper,coursesWrapper);
+                break;
+
             default:
                 System.out.println("Неверный выбор");
         }
@@ -69,6 +78,8 @@ addFromFile = new AddFromFile();
         System.out.println("1: Посмотреть всех студентов");
         System.out.println("2: Запись студентов и курсов в программу");
         System.out.println("3: Посмотреть все курсы");
+        System.out.println("4: Добавить студента на курс");
+
 
     }
 

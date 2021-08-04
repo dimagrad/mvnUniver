@@ -19,7 +19,15 @@ public class CoursesWrapper {
     }
 
     public void addCourse(CourseEntity course){
-        courses.add(course);
+        if (!courses.contains(course)){
+
+            courses.add(course);
+
+        } else {
+
+            System.out.println("Курс уже существует");
+        }
+
     }
 
     public void printCourses(){
@@ -42,4 +50,6 @@ public class CoursesWrapper {
             throw new Except("Слишком много студентов");
         }
     }
+
+
 }

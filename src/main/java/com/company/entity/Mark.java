@@ -1,5 +1,7 @@
 package com.company.entity;
 
+import java.util.Random;
+
 public enum Mark {
 
     A(90),B(70),C(50),D(30),E(10);
@@ -15,8 +17,16 @@ public enum Mark {
         return mark;
      }
 
-    public static Integer getRandom() {
+//     public Mark getMark(Integer m){
+//        mark = m;
+//        return m;
+//
+//     }
 
-        return values()[(int) (Math.random() * values().length)].mark;
+
+    public static Mark getRandom() {
+
+        return Mark.values()[new Random().nextInt(Mark.values().length)];
     }
+
 }
