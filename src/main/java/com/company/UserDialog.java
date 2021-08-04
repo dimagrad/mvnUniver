@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.entity.StudentEntity;
 import com.company.mock.CourseMock;
 import com.company.mock.StudentMock;
 import com.company.service.AddStudentToCourse;
@@ -8,7 +9,9 @@ import com.company.service.addFromFile.AddFromFile;
 import com.company.wrapper.CoursesWrapper;
 import com.company.wrapper.StudentsWrapper;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 public class UserDialog {
 
@@ -63,6 +66,24 @@ public class UserDialog {
 
                 addStudentToCourse.addStudentToCourse(studentsWrapper,coursesWrapper);
                 break;
+            case 5:
+               List<StudentEntity> without3 = studentsWrapper.getStudents().stream().filter(z -> studentsWrapper.getHigher(z.getAllMarks())).collect(Collectors.toList());
+                for (StudentEntity studentEntity : without3) {
+                    System.out.println(studentEntity);
+                }
+                break;
+
+            case 6:
+
+                break;
+
+            case 7:
+
+                break;
+
+            case 8:
+
+                break;
 
             default:
                 System.out.println("Неверный выбор");
@@ -79,6 +100,10 @@ public class UserDialog {
         System.out.println("2: Запись студентов и курсов в программу");
         System.out.println("3: Посмотреть все курсы");
         System.out.println("4: Добавить студента на курс");
+        System.out.println("5 Студенты у которых нет 3");
+        System.out.println("6: Студенты отсортированные по среднему балу");
+        System.out.println("7: Студенты без пропусков");
+        System.out.println("8: Разбивание на 4 списка");
 
 
     }

@@ -43,6 +43,10 @@ public class StudentEntity {
     public Mark getMarks(int i, int j){
         return marks[i][j];
     }
+
+    public Mark[][] getAllMarks(){
+        return marks;
+    }
     @Override
     public String toString() {
 

@@ -46,6 +46,7 @@ public class StudentsWrapper {
             System.out.println(student);
         }
     }
+
     public boolean addCourse(StudentEntity student, CourseEntity course) {
 
         if (student.getCourses().contains(course)) {
@@ -58,11 +59,11 @@ public class StudentsWrapper {
             student.setCourse(course);
             int i = student.getCourses().size() - 1;
             for (int j = 0; j < student.getSizeOfMarks(i); j++) {
-                student.setMark(i,j, Mark.getRandom());
+                student.setMark(i, j, Mark.getRandom());
             }
             System.out.println("студенту записан курс и такие оценки : ");
             for (int j1 = 0; j1 < student.getSizeOfMarks(i); j1++) {
-                System.out.println(student.getMarks(i,j1));
+                System.out.println(student.getMarks(i, j1));
             }
 
             return true;
@@ -71,6 +72,19 @@ public class StudentsWrapper {
             return false;
         }
 
+
     }
 
+    public boolean getHigher(Mark mark[][]) {
+        for (int i = 0; i < mark.length; i++) {
+            for (int j = 0; j < mark[i].length; j++) {
+                if (mark[i][j].getMark() < Mark.D.getMark()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
+
+
