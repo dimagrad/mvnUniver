@@ -17,13 +17,6 @@ public enum Mark {
         return mark;
      }
 
-//     public Mark getMark(Integer m){
-//        mark = m;
-//        return m;
-//
-//     }
-
-
     public static Mark getRandom() {
 
         return Mark.values()[new Random().nextInt(Mark.values().length)];

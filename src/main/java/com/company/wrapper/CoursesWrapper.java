@@ -39,7 +39,7 @@ public class CoursesWrapper {
             return false;
         }
 
-        if (course.getStudents().size() < course.getPte()) {
+        if (course.getStudents().size() < course.getPte() & (student.getCourses().size() < 3)) {
 
 
             course.setStudent(student);

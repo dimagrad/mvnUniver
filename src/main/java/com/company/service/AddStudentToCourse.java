@@ -27,6 +27,8 @@ public class AddStudentToCourse {
         boolean choose;
         CourseEntity chosenCourse;
         StudentEntity chosenStudent;
+        int crs;
+        int st;
 
         do {
 
@@ -37,7 +39,7 @@ public class AddStudentToCourse {
                 System.out.println(student);
             }
 
-            int st = Integer.parseInt(SystemInputService.readLine());
+            st = Integer.parseInt(SystemInputService.readLine());
             System.out.println("Выберите курс");
 
             for (CourseEntity cours : coursesWrapper.getCourses()) {
@@ -45,7 +47,7 @@ public class AddStudentToCourse {
                 System.out.println(cours);
             }
 
-            int crs = Integer.parseInt(SystemInputService.readLine());
+            crs = Integer.parseInt(SystemInputService.readLine());
 
             try {
 

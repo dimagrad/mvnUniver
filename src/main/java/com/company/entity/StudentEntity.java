@@ -11,8 +11,9 @@ public class StudentEntity {
     private String name;
     private long age;
     private String number;
-    private Mark[][] marks = new Mark[3][5];
+    private List<Mark[]> marks;
     private List<CourseEntity> courses;
+    private List<Long> attendance;
 
     public StudentEntity(String name, long age, String number) {
 
@@ -20,37 +21,48 @@ public class StudentEntity {
         this.age = age;
         this.number = number;
         courses = new ArrayList<>();
+        marks = new ArrayList<>();
+        attendance = new ArrayList<>();
     }
 
-    public List<CourseEntity> getCourses(){
+    public List<Long> getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Long hours) {
+        attendance.add(hours);
+    }
+
+    public List<CourseEntity> getCourses() {
 
         return courses;
     }
 
-    public void setCourse(CourseEntity course){
+    public void setCourse(CourseEntity course) {
+
         courses.add(course);
 
     }
-    public int getSizeOfMarks( int i){
-    return marks[i].length;
-    }
 
-    public void setMark(int i, int j, Mark value){
-        marks[i][j] = value;
+    public void setMark(Mark[] mark) {
+
+        marks.add(mark);
 
     }
 
-    public Mark getMarks(int i, int j){
-        return marks[i][j];
-    }
+    public List<Mark[]> getAllMarks() {
 
-    public Mark[][] getAllMarks(){
         return marks;
     }
+
+
+
     @Override
     public String toString() {
 
+        Mark[] mark;
         String s = " ";
+
 
         if (courses.size() == 0)
             return "Студент: Имя - '" + name + "' Возраст: '" + age
@@ -59,19 +71,20 @@ public class StudentEntity {
             for (int i = 0; i < courses.size(); i++) {
 
                 s = s + courses.get(i).getName() + ":";
+                mark = marks.get(i);
 
-                for (int j = 0; j < marks[i].length; j++) {
+                for (int j = 0; j < mark.length; j++) {
 
-                    if (j == marks[i].length - 1) {
+                    if (j == mark.length - 1) {
 
-                        s = s + marks[i][j] + ";";
+                        s = s + mark[j] + ";";
                     } else {
 
-                        s = s + marks[i][j] + ",";
+                        s = s + mark[j] + ",";
                     }
                 }
 
-                s = s + " ";
+                s = s + " Посещаемость: " + attendance.get(i) + " из " + courses.get(i).getMaxHours() + " ";
             }
         return "Студент: Имя - '" + name + "' Возраст: '" + age
                 + "' Номер телефона: '" + number + "' Курсы: " + s;
